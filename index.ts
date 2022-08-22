@@ -31,6 +31,5 @@ const postgres = new azure.postgresql.FlexibleServer("postgres", {
     storageMb: 32*1024,
 });
 
-// TODO how to directly get the fqdn like in terraform?
-export const fqdn = postgres.name.apply(v => `${v}.postgres.database.azure.com`);
+export const fqdn = postgres.fqdn;
 export const password = postgresUserPassword.result;
