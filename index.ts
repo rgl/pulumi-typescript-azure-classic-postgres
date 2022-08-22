@@ -24,10 +24,10 @@ const postgres = new azure.postgresql.FlexibleServer("postgres", {
     administratorLogin: "postgres",
     administratorPassword: postgresUserPassword.result,
     backupRetentionDays: 7,
-    // Development (aka Burstable) sku.
-    // 1 vCores, 2 GiB RAM, 32 GiB storage.
+    // NB sku_name is <TIER>_<NAME>, e.g. B_Standard_B1ms, GP_Standard_D2s_v3, MO_Standard_E4s_v3.
+    // see az postgres flexible-server list-skus --output table --location northeurope
     // see https://docs.microsoft.com/en-us/azure/templates/microsoft.dbforpostgresql/2021-06-01/flexibleservers#sku
-    skuName: "B_Standard_B1ms",
+    skuName: "B_Standard_B1ms", // 1 vCores, 2 GiB RAM.
     storageMb: 32*1024,
 });
 
