@@ -29,7 +29,11 @@ Install the dependencies:
 choco install -y azure-cli --version 2.39.0
 choco install -y pulumi --version 3.38.0
 choco install -y nodejs-lts --version 16.17.0
-choco install -y postgresql14 --ia '--enable-components commandlinetools'
+choco install -y postgresql14 --version 14.5.1 `
+    --install-arguments "'$(@(
+            '--enable-components commandlinetools'
+            '--disable-components server'
+        ) -join ' ')'"
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
 Update-SessionEnvironment
 npm ci
