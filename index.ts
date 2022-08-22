@@ -31,5 +31,11 @@ const postgres = new azure.postgresql.FlexibleServer("postgres", {
     storageMb: 32*1024,
 });
 
+new azure.postgresql.FlexibleServerFirewallRule("all", {
+    serverId: postgres.id,
+    startIpAddress: "0.0.0.0",
+    endIpAddress: "255.255.255.255",
+});
+
 export const fqdn = postgres.fqdn;
 export const password = postgresUserPassword.result;
