@@ -89,7 +89,7 @@ $env:PGSSLMODE = 'verify-full'
 $env:PGSSLROOTCERT = $cacertsPath
 $env:PGHOST = pulumi stack output fqdn
 $env:PGDATABASE = 'postgres'
-$env:PGUSER = "postgres@$(pulumi stack output host)"
+$env:PGUSER = 'postgres'
 $env:PGPASSWORD = pulumi stack output password --show-secrets
 psql
 ```
